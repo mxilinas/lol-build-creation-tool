@@ -7,7 +7,6 @@ import StatsView from "@/components/StatsView.vue"
 import { fetchChampionInfo } from "@/utils/championApi.ts"
 import { fetchAllItemsLocal } from "@/utils/itemsApi.ts"
 import ItemCard from "@/components/ItemCard.vue"
-import { parseItemStat } from "@/utils/stats"
 
 const championId = props.id
 const champion = ref(null)

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue"
-import ChampionList from "@/components/ChampionList.vue"
+import ChampionList from "../components/ChampionList.vue"
 </script>
 
 <template>
