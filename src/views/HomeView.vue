@@ -4,6 +4,5 @@ import ChampionList from "@/components/ChampionList.vue"
 </script>
 
 <template>
-  <p>Champions</p>
   <ChampionList></ChampionList>
 </template>

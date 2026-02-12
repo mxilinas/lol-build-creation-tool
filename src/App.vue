@@ -1,10 +1,10 @@
 <template>
   <div id=#app>
-  <header>
-    <h1> LOL Champion Builder </h1>
-  </header>
-  <router-view />
-    </div>
+    <header>
+      <h1> League of Legends Build Creation tool </h1>
+    </header>
+    <router-view />
+  </div>
 </template>
 
 <style>

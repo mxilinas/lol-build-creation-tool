@@ -7,6 +7,7 @@ import StatsView from "@/components/StatsView.vue"
 import { fetchChampionInfo } from "@/utils/championApi.ts"
 import { fetchAllItemsLocal } from "@/utils/itemsApi.ts"
 import ItemCard from "@/components/ItemCard.vue"
+import { parseItemStat } from "@/utils/stats"
 
 const championId = props.id
 const champion = ref(null)
@@ -15,16 +16,31 @@ const items = ref([])
 
 const level = ref(1)
 
+const selectedItems = ref([])
+
+function toggleSelect(item) {
+  const index = selectedItems.value.findIndex(i => i.name === item.name)
+  if (index === -1) {
+    selectedItems.value.push(item)
+  } else {
+    selectedItems.value.splice(index, 1)
+  }
+}
+
 const loading = ref(true)
 const error = ref(null)
 
 onMounted(async () => {
   try {
     const championInfo = await fetchChampionInfo()
-    items.value = await fetchAllItemsLocal()
+    const itemData = await fetchAllItemsLocal()
+    items.value = itemData
+
     champion.value = Object.values(championInfo).find(c => c.id === championId)
+
     if (!champion.value) throw new Error("Champion not found!")
-    // console.log(champion.value)
+
+
   } catch (err) {
     error.value = err.message
   } finally {
@@ -52,12 +68,14 @@ onMounted(async () => {
     </div>
 
     <div class="stats-container">
-      <StatsView v-if="champion && champion.stats" :stats="champion.stats" :level="Number(level)">
+      <StatsView v-if="champion && champion.stats" :stats="champion.stats" :level="Number(level)"
+        :selectedItems="selectedItems">
       </StatsView>
     </div>
 
     <div class="items-container">
-      <ItemCard v-for="(item, key) in items" :item_id="Number(key)" :item_info="item" :key="key" />
+      <ItemCard v-for="(item, key) in items" :item_id="Number(key)" :item_info="item" :key="key"
+        @click="toggleSelect(item)" :is_selected="selectedItems.includes(item)" />
     </div>
 
   </div>

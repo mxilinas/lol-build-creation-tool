@@ -1,18 +1,14 @@
 <script setup>
 const props = defineProps({
   item_id: Number,
-  item_info: Object
+  item_info: Object,
+  is_selected: Boolean
 });
-
-const selectItem = () => {
-
-}
 </script>
 
 <template>
   <div class="item-card">
-    <img :src="`/images/item/${item_id}.png`" :alt="item_info.name"
-      style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;" />
+    <img :class="{ selected: is_selected }" :src="`/images/item/${item_id}.png`" :alt="item_info.name" />
   </div>
 </template>
 
@@ -25,8 +21,19 @@ const selectItem = () => {
 }
 
 .item-card img {
+  filter: grayscale(100%);
   cursor: pointer;
   width: 100%;
   border-radius: 8px;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.item-card img.selected {
+  border: 4px solid orange;
+  box-sizing: border-box;
+  filter: grayscale(0%);
 }
 </style>

@@ -1,7 +1,43 @@
 # League of Legends Build Creation Tool
 
-For a given champion from the free rotation
-Show the following stats and how they change based on items and champion level
+
+## Handling Item Modifiers
+
+Looking at a sample of item stats... 
+
+```json
+"PercentHPRegenMod": 0,
+"FlatMPRegenMod": 0,
+"rFlatMPRegenModPerLevel": 0,
+"PercentMPRegenMod": 0,
+"FlatArmorMod": 0,
+"rFlatArmorModPerLevel": 0,
+"PercentArmorMod": 0,
+```
+
+I found the following pattern:
+
+[prefix][StatName][optional PerLevel suffix]
+
+prefix is one of: Flat, rFlat, Percent, rPercent
+
+StatName is the main stat being modified
+
+PerLevel is optional and indicates scaling per level
+
+```typescript
+export type ItemModifier = {
+  stat: StatBase
+  prefix: StatPrefix
+  perLevel?: 'PerLevel'
+}
+```
+
+Given this information I wrote a parser for item modifiers.
+
+## Problem Statement
+
+For a given champion from the free rotation show the following stats and how they change based on selected items and champion level.
 
 - Health
 - Mana
@@ -56,6 +92,15 @@ vue router provides a params object.
 
 Q: What is the max level of a champion?
 A: It used to be 30 but now it's unlimited.
+
+#### Item Modifiers
+
+| Key                                   | Type            | Meaning               |
+| ------------------------------------- | --------------- | --------------------- |
+| `FlatHPPoolMod`                       | flat            | +HP flat bonus        |
+| `PercentHPPoolMod`                    | percent         | +% of base HP         |
+| `rFlatHPModPerLevel`                  | perLevel        | +HP per level         |
+| `rPercentArmorPenetrationModPerLevel` | percentPerLevel | % armor pen per level |
 
 
 ### Riot Games API

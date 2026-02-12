@@ -5,13 +5,13 @@ import { computed, watch } from "vue"
 
 const props = defineProps({
   stats: Object,
-  level: Number
+  level: Number,
+  selectedItems: Array,
 });
 
-const statsInfo = getStatsInfo(props.stats)
-const moddedStats = computed(() => { return getModdedStats(statsInfo, props.level) })
-
-console.log(props.level)
+const moddedStats = computed(() => {
+  return getModdedStats(props.stats, props.level, props.selectedItems)
+})
 
 </script>
 
