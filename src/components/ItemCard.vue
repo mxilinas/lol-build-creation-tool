@@ -8,7 +8,8 @@ const props = defineProps({
 
 <template>
   <div class="item-card">
-    <img :class="{ selected: is_selected }" :src="`/images/item/${item_id}.png`" :alt="item_info.name" />
+    <img :class="{ selected: is_selected }" :src="`/lol-build-creation-tool/images/item/${item_id}.png`"
+      :alt="item_info.name" />
   </div>
 </template>
 
