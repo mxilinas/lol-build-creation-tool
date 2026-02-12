@@ -51,6 +51,13 @@ Fetching data after navigation: Display a loading screen.
 
 vue router provides a params object.
 
+
+### League of Legends
+
+Q: What is the max level of a champion?
+A: It used to be 30 but now it's unlimited.
+
+
 ### Riot Games API
 The API returns all data in JSON.
 Only returns non-empty values
