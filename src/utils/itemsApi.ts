@@ -10,7 +10,7 @@ export async function fetchAllItemsWeb(): Promise<Record<string, LeagueItem>[]> 
 }
 
 export async function fetchAllItemsLocal(): Promise<Record<string, LeagueItem>[]> {
-  const response = await fetch('/info/item.json')
+  const response = await fetch('/lol-build-creation-tool/info/item.json')
   if (!response.ok) throw new Error('Failed to fetch all items')
   const data: { data: Record<string, LeagueItem>[] } = await response.json()
   return data.data

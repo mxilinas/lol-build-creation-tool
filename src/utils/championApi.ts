@@ -32,7 +32,7 @@ export async function fetchFreeChampionIds(apiKey: string) {
 }
 
 export async function fetchFreeChampionIdsLocal() {
-  const response = await fetch('/public/info/freeChampionIds.json')
+  const response = await fetch('/lol-build-creation-tool/info/freeChampionIds.json')
 
   if (!response.ok) {
     throw new Error(`Failed to fetch local champion ids: ${response.status} ${response.statusText}`)
