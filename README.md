@@ -1,5 +1,15 @@
 # League of Legends Build Creation Tool
 
+## Quick start
+
+clone the project
+
+```bash
+git clone https://github.com/mxilinas/lol-build-creation-tool
+cd lol-build-creation-tool
+npm install
+npm run dev
+```
 
 ## Handling Item Modifiers
 
