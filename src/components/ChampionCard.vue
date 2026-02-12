@@ -1,12 +1,14 @@
 <script setup>
-  import { useRouter } from "vue-router"
+import { useRouter } from "vue-router"
+
 const props = defineProps({
   champion: Object
 })
+
 const router = useRouter()
 
 const goToChampion = () => {
-  router.push("/champion/${champion.id}")
+  router.push(`/champion/${props.champion.id}`)
 }
 
 </script>

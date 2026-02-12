@@ -1,48 +1,69 @@
-# lol-build-creation-tool
+# League of Legends Build Creation Tool
 
-This template should help get you started developing with Vue 3 in Vite.
+For a given champion from the free rotation
+Show the following stats and how they change based on items and champion level
 
-## Recommended IDE Setup
+- Health
+- Mana
+- Attack
+- Ability Power
+- Magic Resist
+- Armor
+- Crit Chance
+- Life Steal
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+(Bonus) Deploy on pages.
 
-## Recommended Browser Setup
+## Action Plan
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+Click a champion from a list
 
-## Type Support for `.vue` Imports in TS
+Display that champions and Display all items in a grid
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+Click items to select them
 
-## Customize configuration
+Show attribute bars that change as items are selected
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+### Components
 
-## Project Setup
+#### Champion List
 
-```sh
-npm install
-```
+Use the API to get a list of free champions.
 
-### Compile and Hot-Reload for Development
+Search this json file for the free champions.
 
-```sh
-npm run dev
-```
+https://ddragon.leagueoflegends.com/cdn/16.3.1/data/en_US/champion.json
 
-### Type-Check, Compile and Minify for Production
 
-```sh
-npm run build
-```
+### Features
 
-### Lint with [ESLint](https://eslint.org/)
+- user input
+- track selected items
+- fetch champion data and display
 
-```sh
-npm run lint
-```
+## Research
+
+### Vue.js
+
+Fetching data after navigation: Display a loading screen.
+
+#### Dynamic Routing with Params
+
+vue router provides a params object.
+
+### Riot Games API
+The API returns all data in JSON.
+Only returns non-empty values
+
+#### Response Codes
+200 return response bodies and are documented online.
+
+Logic should fail based on response code alone.
+
+400 - The client failed to provide a request
+401 - Unauthorized (request did not contain credentials)
+403 - Forbidden (invalid API key)
+404 - Not found
+415 - Unsupported media (Header was not set correctly)
+429 - Too many requests
+503 - Service not available
